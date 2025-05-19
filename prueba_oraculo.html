@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oráculo de Luz</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Aquí enlazamos el CSS -->
+</head>
+<body>
+<div class="contenedor-sagrado">
+    <h2>Oráculo de la Divinidad</h2>
+
+    <div class="wave-container">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+
+
+
+    <div class="message-box">
+        <p id="inspirational-message"></p>
+    </div>
+    
+    <button class="main-button">Recibir una frase</button>
+</div>
+
+
+<span class="sound-label">Sonido</span>
+<button onclick="toggleSound()" class="sound-btn">🔊</button>
+
+
+<script>
+    // Verificamos si el sonido estaba activo desde index.html
+    const sonidoActivo = localStorage.getItem('sonidoActivo')
+    const audio = new Audio("https://www.soundjay.com/nature/sounds/ocean-wave-1.mp3");
+    audio.loop = true;
+
+    
+    // Sincronización al cargar la página
+    if (sonidoActivo === 'true') {
+        audio.play();
+        document.querySelector('.sound-btn').textContent = '🔊';
+    } else {
+        document.querySelector('.sound-btn').textContent = '🔇';
+    }
+    
+    
+    function toggleSound() {
+        const btn = document.querySelector('.sound-btn');
+        if (audio.paused) {
+            audio.play();
+            localStorage.setItem('sonidoActivo', 'true');
+            btn.textContent = '🔊';
+        } else {
+            audio.pause();
+            localStorage.setItem('sonidoActivo', 'false');
+            btn.textContent = '🔇';
+        }
+    }
+
+    // Sincronización si se vuelve desde index.html
+    window.addEventListener('load', () => {
+        const sonidoActivo = localStorage.getItem('sonidoActivo');
+        if (sonidoActivo === 'true') {
+            audio.play();
+            document.querySelector('.sound-btn').textContent = '🔊';
+        } else {
+            audio.pause();
+            document.querySelector('.sound-btn').textContent = '🔇';
+        }
+    });
+
+    const message = "Camina con certeza, porque los caminos invisibles ya están abriéndose para ti...";
+    const messageElement = document.getElementById("inspirational-message");
+    let index = 0;
+    
+
+    function typeMessage() {
+    if (index < message.length) {
+        messageElement.textContent += message.charAt(index);
+        index++;
+        setTimeout(typeMessage, 80);
+        } 
+    }
+
+
+    window.addEventListener("load", () => {
+    setTimeout(typeMessage, 1000);
+    });
+</script>
+
+
+
+</body>
+
+</html>

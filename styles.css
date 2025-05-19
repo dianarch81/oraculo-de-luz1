@@ -1,0 +1,206 @@
+:root {
+    /* 🎨 Colores sagrados */
+    --color-mar: #004e92;         /* Azul profundo del mar */
+    --color-mar-claro: #5cb3ff;   /* Azul celeste suave */
+    --color-cielo: #b3e5fc;       /* Azul cielo sereno */
+    --color-arena: #e6d8b3;       /* Arena dorada y cálida */
+    --color-coral: #8fe3b0;       /* Verde coral suave */
+    --color-hojas: #a8e6cf;       /* Verde de hojas movidas por la brisa */
+
+    /* ✒️ Tipografía */
+    --fuente-principal: 'Georgia', serif;
+
+    /* 🔠 Tamaño base */
+    --tamano-base: 16px;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    font-size: var(--tamano-base);
+    background: linear-gradient(to bottom, var(--color-cielo), var(--color-mar-claro), var(--color-mar));
+    color: #2e2e2e;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: background 1s ease;
+}
+
+
+/* Estilo para las cajas o secciones destacadas */
+.container, .highlight-box {
+    background-color: #4A90E2; /* Azul mar profundo */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px;
+    color: white; /* Para contrastar sobre el azul */
+}
+
+/* Botones principales */
+button {
+    background-color: var(--color-hojas);
+    color: #004e00;
+    border: none;
+    padding: 0.75em 1.5em;
+    font-size: 1em;
+    font-family: var(--fuente-principal);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.4s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--color-coral);
+    transform: scale(1.05);
+}
+
+/* Campos de entrada (input y textarea) */
+input[type="text"],
+input[type="email"],
+textarea {
+width: 100%;
+padding: 0.75em 1em;
+margin: 10px 0;
+border: 2px solid var(--color-coral);
+border-radius: 10px;
+background-color: rgba(255, 255, 255, 0.8);
+font-family: var(--fuente-principal);
+font-size: 1em;
+box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+border-color: var(--color-hojas);
+box-shadow: 0 0 8px rgba(127, 255, 127, 0.5);
+outline: none;
+}
+
+/* Área del mensaje o frase inspiradora */
+.message-box {
+    background-color: #F4E1B1; /* Arena dorada */
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    font-size: 24px;
+    font-style: italic;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Brillitos en la caja de la frase, como arena iluminada */
+/* Fondo de brillitos sutiles */
+.message-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.25;
+    animation: sparkle 4s infinite ease-in-out;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+  /* Capa de brillitos intensos ocasionales */
+.message-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: radial-gradient(white 2px, transparent 2px);
+    background-size: 60px 60px;
+    opacity: 0;
+    animation: sporadicSparkle 8s infinite ease-in-out;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+  /* Aseguramos que el texto esté arriba de ambas capas */
+.message-box {
+    position: relative;
+    z-index: 2;
+}
+
+  /* Animación sutil de fondo */
+@keyframes sparkle {
+    0%, 100% { opacity: 0.2; transform: translate(0, 0); }
+    50% { opacity: 0.35; transform: translate(-2px, 1px); }
+}
+
+  /* Destellos más intensos, esporádicos */
+@keyframes sporadicSparkle {
+    0%, 70%, 100% { opacity: 0; }
+    75% { opacity: 0.7; transform: scale(1.05); }
+    80% { opacity: 0.3; transform: scale(1); }
+}
+
+/* Contenedor Sagrado del Oráculo */
+.contenedor-sagrado {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.25); /* Suave velo translúcido */
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra suave y protectora */
+    backdrop-filter: blur(8px); /* Suaviza lo que hay detrás, da profundidad */
+    animation: aparecer 1.8s ease-in-out both;
+}
+
+.sound-label {
+    position: absolute;
+    top: 22px;
+    right: 50px;
+    font-size: 16px;
+    color: #FFD700;
+}
+.sound-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Animación de aparición suave */
+@keyframes aparecer {
+from {
+    opacity: 0;
+    transform: translateY(40px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* Efecto de escritura en la arena */
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid rgba(0,0,0,0.3); /* Opcional: línea como si estuviera escribiendo */
+    white-space: nowrap;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+    font-style: italic;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgba(0,0,0,0.3) }
+}
